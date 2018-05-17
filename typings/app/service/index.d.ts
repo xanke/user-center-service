@@ -1,10 +1,12 @@
 // This file was auto created by egg-ts-helper
 // Do not modify this file!!!!!!!!!
 
-import Test from '../../../app/service/Test';
+import Auth from '../../../app/service/auth';
+import Mail from '../../../app/service/mail';
 
 declare module 'egg' {
   interface IService {
-    test: Test;
+    auth: Auth;
+    mail: Mail;
   }
 }

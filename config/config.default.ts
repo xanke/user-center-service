@@ -1,7 +1,7 @@
 import { EggAppConfig, PowerPartial } from 'egg'
 
 // for config.{env}.ts
-export type DefaultConfig = PowerPartial<EggAppConfig & BizConfig>
+export type DefaultConfig = PowerPartial<EggAppConfig>
 
 // app special config scheme
 export interface BizConfig {
@@ -31,6 +31,30 @@ export default (appInfo: EggAppConfig) => {
     username: 'root',
     password: 'root',
     timezone: '+08:00'
+  }
+
+  config.redis = {
+    client: {
+      host: '127.0.0.1',
+      port: '6379',
+      password: '',
+      db: '0'
+    }
+  }
+
+  config.sessionRedis = {
+    name: ''
+  }
+
+  config.qiniu = {
+    accessKey: '',
+    secretKey: '',
+    bucket: ''
+  }
+
+  config.gt3 = {
+    geetestId: '',
+    geetestKey: ''
   }
 
   return config
