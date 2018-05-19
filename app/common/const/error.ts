@@ -1,0 +1,11 @@
+export const ERROR_CODE = {
+  ERR_DUPLICATED_PHONE_NO: 100001,
+  ERR_FORMAT_PHONE_NO: 100002,
+  UNKNOW_ERROR: 9999,
+};
+
+export const ERROR_MESSAGE = {
+  ERR_DUPLICATED_PHONE_NO: '该手机号已注册，请直接登录',
+  ERR_FORMAT_PHONE_NO: '手机号码格式错误',
+  UNKNOW_ERROR: '未知错误',
+};

@@ -1,6 +1,7 @@
-let apiError = require('../common/api_error');
+import ApiError from '../common/api_error';
+import { ERROR_CODE, ERROR_MESSAGE } from '../common/const/error';
 
-let responseFormatter = (ctx) => {
+const responseFormatter = (ctx) => {
   if (ctx.body) {
     ctx.body = {
       code: 0,
@@ -20,17 +21,30 @@ function urlFilter() {
     try {
       await next();
     } catch (error) {
-      console.log(error.name);
-      // if (error.message === 'ERR_DUPLICATED_PHONE_NO') {
-      ctx.status = 200;
-      ctx.body = {
-        code: '12',
-        message: error.message,
-      };
-      // }
-      // throw error
+      if (error instanceof ApiError) {
+        const { name } = error;
+        const code = ERROR_CODE[name];
+        const message = ERROR_MESSAGE[name];
+
+        ctx.status = 200;
+        ctx.body = {
+          code,
+          message,
+          name,
+        };
+      } else {
+        const { status, name, message } = error;
+        if (status === 422) {
+          ctx.status = 200;
+          ctx.body = {
+            name,
+            message,
+          };
+        }
+      }
+      return;
     }
-    // responseFormatter(ctx)
+    responseFormatter(ctx);
   };
 }
 module.exports = urlFilter;

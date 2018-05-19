@@ -1,7 +1,5 @@
 import { Controller } from 'egg';
 import { parseNumber } from 'libphonenumber-js';
-// var apiError = require('../common/api_error')
-import apiError from '../common/api_error';
 
 export default class AccountController extends Controller {
   public async signIn() {
@@ -17,7 +15,7 @@ export default class AccountController extends Controller {
     const { country, phone: phoneNo } = parseNumber(phone);
 
     if (!country) {
-      throw new apiError('ERR_DUPLICATED_PHONE_NO');
+      ctx.error('ERR_DUPLICATED_PHONE_NO');
     }
 
     if (country !== 'CN') {
