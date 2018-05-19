@@ -6,10 +6,12 @@
 |
 */
 
-// import errorInfo from '../common/error_info'
+import apiError from '../common/api_error';
 
 const extendContext = {
-  // errorInfo,
+  error(name) {
+    throw new apiError(name);
+  },
   /**
    * 抛出自定义异常
    *
