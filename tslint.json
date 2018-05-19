@@ -1,13 +1,14 @@
 {
   "extends": "tslint:latest",
   "rules": {
+    "no-var-requires": false,
     "quotemark": [
       true,
       "single",
       "jsx-double"
     ],
     "no-console": [
-      true,
+      false,
       "dir",
       "log",
       "error",
@@ -37,6 +38,7 @@
       true,
       "allow-leading-underscore"
     ],
+    "no-trailing-whitespace": false,
     "align": [true, "statements"]
   }
 }

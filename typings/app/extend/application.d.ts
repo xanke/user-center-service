@@ -7,5 +7,6 @@ declare module 'egg' {
     modules: typeof ExtendObject.modules;
     createBcrypt: typeof ExtendObject.createBcrypt;
     verifyBcrypt: typeof ExtendObject.verifyBcrypt;
+    randomNum: typeof ExtendObject.randomNum;
   }
 }
