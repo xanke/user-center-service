@@ -6,9 +6,9 @@
 |
 */
 
-import * as bcryptjs from 'bcryptjs'
-import { Application } from 'egg'
-const modulesSymbol = Symbol('Application#modules')
+import * as bcryptjs from 'bcryptjs';
+import { Application } from 'egg';
+const modulesSymbol = Symbol('Application#modules');
 
 const extendApplication = {
   /**
@@ -18,14 +18,14 @@ const extendApplication = {
    */
   get modules(): Application {
     if (!(this as any)[modulesSymbol]) {
-      ;(this as any)[modulesSymbol] = {
+      (this as any)[modulesSymbol] = {
         config: {},
         controller: {},
-        middleware: {}
-      }
+        middleware: {},
+      };
     }
 
-    return (this as any)[modulesSymbol]
+    return (this as any)[modulesSymbol];
   },
 
   /**
@@ -36,7 +36,7 @@ const extendApplication = {
    * @returns string
    */
   async createBcrypt(value: string, salt: number = 10): Promise<string> {
-    return bcryptjs.hashSync(value, bcryptjs.genSaltSync(salt))
+    return bcryptjs.hashSync(value, bcryptjs.genSaltSync(salt));
   },
 
   /**
@@ -47,8 +47,22 @@ const extendApplication = {
    * @returns boolean
    */
   async verifyBcrypt(value: string, hash: string): Promise<boolean> {
-    return bcryptjs.compareSync(value, hash)
-  }
-}
+    return bcryptjs.compareSync(value, hash);
+  },
 
-export default extendApplication
+  /**
+   * 生成指定位数随机数
+   *
+   * @param {number} n 位数
+   * @returns
+   */
+  randomNum(n: number) {
+    let t = '';
+    for (let i = 0; i < n; i++) {
+      t += Math.floor(Math.random() * 10);
+    }
+    return t;
+  },
+};
+
+export default extendApplication;

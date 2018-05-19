@@ -1,0 +1,9 @@
+const ERROR_CODE = {
+  ERR_DUPLICATED_PHONE_NO: 100001,
+};
+
+const ERROR_MESSAGE = {
+  ERR_DUPLICATED_PHONE_NO: '该手机号已注册，请直接登录',
+};
+
+export { ERROR_CODE, ERROR_MESSAGE }
