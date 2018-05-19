@@ -15,8 +15,8 @@ let responseFormatter = (ctx) => {
   }
 };
 
-let urlFilter = function() {
-  return async function(ctx, next) {
+function urlFilter() {
+  return async (ctx, next) => {
     try {
       await next();
     } catch (error) {
@@ -30,8 +30,7 @@ let urlFilter = function() {
       // }
       // throw error
     }
-
     // responseFormatter(ctx)
   };
-};
+}
 module.exports = urlFilter;
