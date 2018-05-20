@@ -1,5 +1,11 @@
+/*
++-----------------------------------------------------------------------------------------------------------------------
+| Author: xank <xank@qq.com>  Blog：https://www.xank.cn
++-----------------------------------------------------------------------------------------------------------------------
+| 账户控制
+|
+*/
 import { Controller } from 'egg';
-// import { parseNumber } from 'libphonenumber-js';
 
 export default class AccountController extends Controller {
   public async signIn() {
@@ -27,7 +33,6 @@ export default class AccountController extends Controller {
     } catch (e) {
       console.log(e);
     }
-    // const ret = 
 
     ctx.body = {
       id: ret.id,
