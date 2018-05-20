@@ -100,5 +100,4 @@ export default abstract class CacheService extends Service {
 
     throw error;
   }
-
 }

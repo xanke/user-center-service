@@ -18,6 +18,5 @@ export default function Verify(app: Application) {
       },
     },
   );
-
   return verifySchema;
 }
