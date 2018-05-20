@@ -12,13 +12,11 @@ export default function User(app: Application) {
       name: {
         type: STRING(32),
         unique: true,
-        allowNull: false,
         comment: '用户名',
       },
       email: {
         type: STRING(64),
         unique: true,
-        allowNull: true,
         comment: '邮箱地址',
       },
       phone: {
@@ -40,7 +38,7 @@ export default function User(app: Application) {
       },
       password: {
         type: STRING(255),
-        allowNull: false,
+        defaultValue: '',
       },
       last_actived_at: DATE, // 最后活跃时间
     },

@@ -32,7 +32,6 @@ export default class VerifyController extends Controller {
       phone,
       verifyCode,
     };
-
   }
 
   public async emailCode() {

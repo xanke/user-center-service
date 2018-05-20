@@ -34,6 +34,8 @@ function urlFilter() {
             name,
             message,
           };
+        } else {
+          ctx.body = error;
         }
       }
       return;
