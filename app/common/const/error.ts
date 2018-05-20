@@ -1,5 +1,7 @@
 export const ERROR_CODE = {
   ERR_DUPLICATED_PHONE_NO: 100001,
+  ERR_VERIFY_CODE: 100002,
+  ERR_VERIFY_CODE_TIME: 100003,
   NOT_SUPPORT_PHONE_NO: 100004,
   
   ERR_FORMAT_PHONE_NO: 110001,
@@ -14,6 +16,8 @@ export const ERROR_CODE = {
 
 export const ERROR_MESSAGE = {
   ERR_DUPLICATED_PHONE_NO: '该手机号已注册，请直接登录',
+  ERR_VERIFY_CODE: '验证码错误',
+  ERR_VERIFY_CODE_TIME: '频繁发送验证码',
   NOT_SUPPORT_PHONE_NO: '暂不支持国际手机号码',
 
   ERR_FORMAT_PHONE_NO: '手机号码格式错误',

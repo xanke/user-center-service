@@ -3,15 +3,15 @@ import { parseNumber } from 'libphonenumber-js';
 
 export default class AccountController extends Controller {
   public async signIn() {
-    const { app, ctx } = this;
+    const {  ctx } = this;
 
-    const { phone } = ctx.request.body;
+    const { phone, code } = ctx.request.body;
 
     if (!phone) {
       ctx.error('ERR_NULL_PHONE_NO');
     }
 
-    const { country, phone: phoneNo } = parseNumber(phone);
+    const { country } = parseNumber(phone);
 
     if (!country) {
       ctx.error('ERR_FORMAT_PHONE_NO');
@@ -21,10 +21,13 @@ export default class AccountController extends Controller {
       ctx.error('NOT_SUPPORT_PHONE_NO');
     }
 
-    const verifyCode = app.randomNum(4);
+    const verifyCode = await ctx.service.cache.get(phone + '-verify');
+    if (!verifyCode || code !== verifyCode) {
+      ctx.error('ERR_VERIFY_CODE');
+    }
 
     ctx.body = {
-      phoneNo,
+      phone,
       verifyCode,
     };
   }

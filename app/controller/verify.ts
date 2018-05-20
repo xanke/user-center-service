@@ -10,7 +10,7 @@ export default class VerifyController extends Controller {
       ctx.error('ERR_NULL_PHONE_NO');
     }
 
-    const { country, phone: phoneNo } = parseNumber(phone);
+    const { country } = parseNumber(phone);
 
     if (!country) {
       ctx.error('ERR_FORMAT_PHONE_NO');
@@ -20,12 +20,19 @@ export default class VerifyController extends Controller {
       ctx.error('NOT_SUPPORT_PHONE_NO');
     }
 
-    const verifyCode = app.randomNum(4);
+    const time = await ctx.service.cache.get(phone + '-verify-time');
+    if ((Date.now() - time) < 60 * 1000 ) {
+      ctx.error('ERR_VERIFY_CODE_TIME');
+    }
 
+    const verifyCode = app.randomNum(4);
+    ctx.service.cache.set(phone + '-verify', verifyCode, 60 * 60);
+    ctx.service.cache.set(phone + '-verify-time', Date.now(), 60 * 60);
     ctx.body = {
-      phoneNo,
+      phone,
       verifyCode,
     };
+
   }
 
   public async emailCode() {

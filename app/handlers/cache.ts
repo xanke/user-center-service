@@ -40,6 +40,7 @@ export default class CacheManager extends BaseHandler {
     time: number = 0,
     unit: string = 's',
   ) {
+    console.log(key, value);
     if (isNull(key) || isNull(value)) {
       return this.abortError('请传入正确参数');
     }
