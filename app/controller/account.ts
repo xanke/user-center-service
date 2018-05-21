@@ -60,13 +60,9 @@ export default class AccountController extends Controller {
       ctx.error('ERR_DUPLICATED_PHONE_NO');
     }
 
-    const create = {
-      phone,
-      password,
-      code,
-    };
+    console.log(userData);
 
-    const ret = await ctx.model.User.create(create);
+    const ret = await ctx.model.User.create(userData);
     ctx.service.cache.del(phone + '-verify');
     ctx.service.cache.del(phone + '-verify-time');
 
@@ -76,8 +72,20 @@ export default class AccountController extends Controller {
   }
 
   public async login() {
-    const { ctx } = this;
+    const { ctx, app } = this;
 
-    ctx.body = {};
+    const { phone = '', password = '' } = ctx.request.body;
+    const result = await ctx.model.User.findOne({ where: { phone } });
+    console.log(result.password);
+
+    if (result) {
+      if (await app.verifyBcrypt(password, result.password)) {
+        // 删除密码属性
+        console.log(result);
+        ctx.body = result;
+        return;
+      }
+    }
+    ctx.error('ERR_ACCOUNT');
   }
 }
