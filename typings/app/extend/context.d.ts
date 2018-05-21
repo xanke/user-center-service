@@ -5,6 +5,7 @@ import ExtendObject from '../../../app/extend/context';
 declare module 'egg' {
   interface Context {
     error: typeof ExtendObject.error;
+    validateStruct: typeof ExtendObject.validateStruct;
     abort: typeof ExtendObject.abort;
     validate: typeof ExtendObject.validate;
   }

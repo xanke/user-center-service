@@ -43,7 +43,8 @@ function urlFilter() {
             message,
           };
         } else {
-          ctx.body = error;
+          // ctx.body = error;
+          throw error;
         }
       }
       return;

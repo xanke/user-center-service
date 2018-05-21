@@ -3,7 +3,7 @@ import { isNull } from 'lodash';
 
 export default abstract class CacheService extends Service {
   // 使用缓存类型 [ 以后拓展 ]
-  private get store () {
+  private get store() {
     // return this.app['redis']
     return this.app.redis;
   }
@@ -14,7 +14,7 @@ export default abstract class CacheService extends Service {
    * @param {string} key 缓存标识
    * @returns {string}
    */
-  public getPrefixKey (key: string): string {
+  public getPrefixKey(key: string): string {
     return `${this.app.config.name}.${key}`;
   }
 
@@ -26,11 +26,11 @@ export default abstract class CacheService extends Service {
    * @param {number} time 缓存过期时间
    * @param {string} unit 指定时间单位 （h/m/s/ms）默认为 s
    */
-  public async set (
+  public async set(
     key: string,
     value: any,
     time: number = 0,
-    unit: string = 's',
+    unit: string = 's'
   ) {
     if (isNull(key) || isNull(value)) {
       return this.abortError('请传入正确参数');
@@ -74,7 +74,7 @@ export default abstract class CacheService extends Service {
    *
    * @param {string} key 缓存标识
    */
-  public async get (key: string) {
+  public async get(key: string) {
     if (isNull(key)) {
       return this.abortError('请传入需要获取的缓存名称');
     }
@@ -87,13 +87,26 @@ export default abstract class CacheService extends Service {
   }
 
   /**
+   * 删除指定缓存
+   *
+   * @param {string} key 缓存标识
+   */
+  public async del(key: string) {
+    if (isNull(key)) {
+      return this.abortError('请传入需要删除的缓存名称');
+    }
+
+    return this.store.del(this.getPrefixKey(key));
+  }
+  
+  /**
    * 抛出 cache 异常
    *
    * @param {number} code 错误状态码
    * @param {string} message 错误提示
    * @throws {Error}
    */
-  public async abortError (message: string = 'error', code: number = 422) {
+  public async abortError(message: string = 'error', code: number = 422) {
     const error: any = new Error(`[cache]: ${message}`);
     error.status = code;
     error.name = 'CacheException';
