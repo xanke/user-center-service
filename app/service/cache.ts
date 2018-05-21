@@ -30,7 +30,7 @@ export default abstract class CacheService extends Service {
     key: string,
     value: any,
     time: number = 0,
-    unit: string = 's'
+    unit: string = 's',
   ) {
     if (isNull(key) || isNull(value)) {
       return this.abortError('请传入正确参数');

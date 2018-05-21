@@ -10,7 +10,7 @@ import { Service } from 'egg';
 import { parseNumber } from 'libphonenumber-js';
 
 export default abstract class CacheService extends Service {
-  public phone (value) {
+  public phone (value): void {
     const { ctx } = this;
     if (!value) {
       ctx.error('ERR_NULL_PHONE_NO');
