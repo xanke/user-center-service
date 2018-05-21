@@ -10,8 +10,39 @@ import apiError from '../common/api_error';
 
 const extendContext = {
   error(name) {
+    console.log(name);
     throw new apiError(name);
   },
+
+  /**
+   * 数据结构验证
+   * 
+   * @param {any} 数据 
+   * @param {any} 验证解构 
+   * @returns 
+   */
+  validateStruct(data, struct) {
+    try {
+      struct(data);
+    } catch (e) {
+      const { path, value, type } = e;
+      if (!path) {
+        return;
+      }
+
+      let key = path[0];
+      key = key.toUpperCase();
+      if (value === undefined) {
+        this.error(`ERR_NULL_${key}`);
+      }
+
+      if (type === undefined) {
+        this.error(`ERR_FORMAT_${key}`);
+      }
+      this.error(`ERR_FORMAT_${key}`);
+    }
+  },
+  
   /**
    * 抛出自定义异常
    *

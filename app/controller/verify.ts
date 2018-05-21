@@ -28,6 +28,12 @@ export default class VerifyController extends Controller {
       ctx.error('NOT_SUPPORT_PHONE_NO');
     }
 
+    // 判断是否已注册
+    const find = await ctx.model.User.findOne({ where: { phone } });
+    if (find) {
+      ctx.error('ERR_DUPLICATED_PHONE_NO');
+    }
+
     const time = await ctx.service.cache.get(phone + '-verify-time');
     if ((Date.now() - time) < 60 * 1000 ) {
       ctx.error('ERR_VERIFY_CODE_TIME');

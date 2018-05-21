@@ -9,6 +9,9 @@ export const ERROR_CODE = {
 
   ERR_NULL_PHONE_NO: 120001,
   ERR_NULL_EMAIL: 120002,
+  ERR_NULL_VERIFY_CODE: 120003,
+  ERR_NULL_PASSWORD: 120004,
+  ERR_NULL_CODE: 120005,
 
   NOT_API: 200001,
   UNKNOW_ERROR: 9999,
@@ -17,7 +20,7 @@ export const ERROR_CODE = {
 export const ERROR_MESSAGE = {
   ERR_DUPLICATED_PHONE_NO: '该手机号已注册，请直接登录',
   ERR_VERIFY_CODE: '验证码错误',
-  ERR_VERIFY_CODE_TIME: '频繁发送验证码',
+  ERR_VERIFY_CODE_TIME: '请勿频繁发送验证码',
   NOT_SUPPORT_PHONE_NO: '暂不支持国际手机号码',
 
   ERR_FORMAT_PHONE_NO: '手机号码格式错误',
@@ -25,6 +28,9 @@ export const ERROR_MESSAGE = {
 
   ERR_NULL_PHONE_NO: '请填写手机号',
   ERR_NULL_EMAIL: '请填写邮箱',
+  ERR_NULL_VERIFY_CODE: '请填写验证码',
+  ERR_NULL_PASSWORD: '请填写密码',
+  ERR_NULL_CODE: '请填写验证码',
   
   NOT_API: '没有此 API',
   UNKNOW_ERROR: '未知错误',
