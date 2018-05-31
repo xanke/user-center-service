@@ -2,6 +2,7 @@
 // Do not modify this file!!!!!!!!!
 
 import 'egg-jwt';
+import 'egg-weapp-sdk';
 import 'egg-sequelize';
 import 'egg-router-plus';
 import 'egg-validate';

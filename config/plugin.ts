@@ -7,6 +7,11 @@ export default {
     package: 'egg-jwt',
   },
 
+  weapp: {
+    enable: true,
+    package: 'egg-weapp-sdk',
+  },
+
   // 挂载 egg-sequelize
   sequelize: {
     enable: true,

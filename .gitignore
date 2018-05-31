@@ -18,5 +18,5 @@ app/**/*.map
 test/**/*.map
 config/**/*.map
 
-config/config.default.ts
+config/config.local.ts
 config/config.prod.ts
