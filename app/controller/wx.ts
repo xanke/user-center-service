@@ -10,12 +10,11 @@ import { Controller } from 'egg';
 
 export default class WxController extends Controller {
   public async login() {
-
     const { ctx } = this;
- 
+
     console.log(ctx);
     console.log(Date.now());
 
-    ctx.body = Date.now()
+    ctx.body = Date.now();
   }
 }
