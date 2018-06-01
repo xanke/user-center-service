@@ -1,14 +1,14 @@
 {
   "name": "user-center-service",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "",
   "private": true,
   "egg": {
     "typescript": true
   },
   "scripts": {
-    "start": "egg-scripts start --title=egg-server-user",
-    "stop": "egg-scripts stop --title=egg-server-user",
+    "start": "egg-scripts start --title=user-center-service",
+    "stop": "egg-scripts stop --title=user-center-service",
     "dev": "egg-bin dev -r egg-ts-helper/register --port 7501",
     "debug": "egg-bin debug -r egg-ts-helper/register",
     "test-local": "egg-bin test -r egg-ts-helper/register",
