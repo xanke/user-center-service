@@ -40,6 +40,11 @@ export default function User(app: Application) {
         type: STRING(255),
         defaultValue: '',
       },
+      level: {
+        type: INTEGER,
+        allowNull: true,
+        defaultValue: 0,
+      },
       last_actived_at: DATE, // 最后活跃时间
     },
     {

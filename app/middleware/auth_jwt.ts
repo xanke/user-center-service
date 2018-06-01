@@ -12,16 +12,17 @@ export default function authJWTMiddleware () {
   /**
    * 该中间件无须验证的路由数组
    */
-  // const except: string[] = [
-  //   `/v1/${app.config.apps.adminRouter}/login`, // 后端登录
-  //   `/v1/${app.config.apps.adminRouter}/register`, // 后端注册
-  // ];
+  const except: string[] = [
+    `/v1/login`, 
+    `/v1/register`, 
+    `/v1/user`, 
+  ];
 
   return async (ctx: Context, next: () => Promise<any>) => {
     // 判断当前访问路径是否是无须验证的路由数组
-    // if (except.includes(ctx.path)) {
-    //   return next();
-    // }
+    if (except.includes(ctx.path)) {
+      return next();
+    }
 
     // 获取 header 携带的 authorization 头
     const getToken = ctx.get('authorization');

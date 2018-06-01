@@ -79,15 +79,16 @@ export default class AccountController extends Controller {
       ctx.error('ERR_ACCOUNT');
     }
 
-    const { id, name, email, avatar } = result;
+    const { id, name, email, avatar, level } = result;
 
     const userinfo = {
       id,
       name,
       email,
       avatar,
+      level,
     };
-    
+
     if (await app.verifyBcrypt(password, result.password)) {
       const data = {
         userinfo,
