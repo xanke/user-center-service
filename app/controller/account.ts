@@ -60,6 +60,7 @@ export default class AccountController extends Controller {
       ctx.error('ERR_DUPLICATED_PHONE_NO');
     }
 
+    // 创建用户
     const ret = await ctx.model.User.create(userData);
     ctx.service.cache.del(phone + '-verify');
     ctx.service.cache.del(phone + '-verify-time');
@@ -72,7 +73,7 @@ export default class AccountController extends Controller {
   public async login() {
     const { ctx, app } = this;
     const { phone = '', password = '' } = ctx.request.body;
-    const result = await ctx.model.User.findOne({ where: { phone } });
+    const result: any = await ctx.model.User.findOne({ where: { phone } });
 
     const {id, name, email, avatar} = result;
 
@@ -83,7 +84,12 @@ export default class AccountController extends Controller {
     if (result) {
       if (await app.verifyBcrypt(password, result.password)) {
         // 删除密码属性
-        ctx.body = userinfo;
+        const data = {
+          userinfo,
+          token: await ctx.service.jwt.create(result),
+        };
+        ctx.body = data;
+
         return;
       }
     }
