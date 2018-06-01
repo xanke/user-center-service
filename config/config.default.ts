@@ -21,7 +21,7 @@ export default (appInfo: EggAppConfig) => {
   config.keys = appInfo.name + '_1526548823403_7693';
 
   // add your config here
-  config.middleware = ['notfoundHandler', 'responseFormatter'];
+  config.middleware = ['notfoundHandler', 'responseFormatter', 'authJwt'];
 
   config.sequelize = {
     dialect: 'mysql',

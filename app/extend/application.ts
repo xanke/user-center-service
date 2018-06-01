@@ -16,6 +16,7 @@ const extendApplication = {
    *
    * @returns void
    */
+
   get modules(): Application {
     if (!(this as any)[modulesSymbol]) {
       (this as any)[modulesSymbol] = {

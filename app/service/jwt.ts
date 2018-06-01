@@ -31,11 +31,12 @@ export default abstract class JwtService extends Service {
         clockTolerance: 30, // 检查 nbf (token 最早可用时间) 和 exp (token 过期时间) 声明时容忍的秒数，以处理不同服务器之间的小时钟差异
       },
     );
-
+    
     // 判断该 token 是否已被拉黑
-    if (await this.verifyBlack(token)) {
-      await this.ctx.abort(403, '无效的 token');
-    }
+    // if (await this.verifyBlack(token)) {
+    //   await this.ctx.abort(403, '无效的 token');
+    // }
+    console.log(result);
 
     return result;
   }

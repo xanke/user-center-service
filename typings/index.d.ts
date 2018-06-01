@@ -2,9 +2,12 @@ import { Redis } from "ioredis";
 
 import ExtendApplication from "./extend/application";
 import ExtendContext from "./extend/context";
+import Validate from "./extend/validate";
+import Rule from "./extend/rule";
 
 declare module "egg" {
   export interface Application {
+    rule: Rule,
     // jwt
     jwt: {
       // 加密

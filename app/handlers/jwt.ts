@@ -61,6 +61,7 @@ export default class Jwt extends BaseHandler {
    * @param {string} $token JWT token
    */
   public async getSub (token: string) {
+    console.log(token);
     const jwtData: any = await this.verify(token);
 
     return jwtData.sub;

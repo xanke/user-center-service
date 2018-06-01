@@ -75,23 +75,27 @@ export default class AccountController extends Controller {
     const { phone = '', password = '' } = ctx.request.body;
     const result: any = await ctx.model.User.findOne({ where: { phone } });
 
-    const {id, name, email, avatar} = result;
+    if (!result) {
+      ctx.error('ERR_ACCOUNT');
+    }
+
+    const { id, name, email, avatar } = result;
 
     const userinfo = {
-      id, name, email, avatar,
+      id,
+      name,
+      email,
+      avatar,
     };
+    
+    if (await app.verifyBcrypt(password, result.password)) {
+      const data = {
+        userinfo,
+        token: await ctx.service.jwt.create(result),
+      };
+      ctx.body = data;
 
-    if (result) {
-      if (await app.verifyBcrypt(password, result.password)) {
-        // 删除密码属性
-        const data = {
-          userinfo,
-          token: await ctx.service.jwt.create(result),
-        };
-        ctx.body = data;
-
-        return;
-      }
+      return;
     }
     ctx.error('ERR_ACCOUNT');
   }
