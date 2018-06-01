@@ -36,7 +36,6 @@ export default abstract class JwtService extends Service {
     // if (await this.verifyBlack(token)) {
     //   await this.ctx.abort(403, '无效的 token');
     // }
-    console.log(result);
 
     return result;
   }

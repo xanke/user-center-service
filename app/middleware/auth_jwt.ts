@@ -15,7 +15,6 @@ export default function authJWTMiddleware () {
   const except: string[] = [
     `/v1/login`, 
     `/v1/register`, 
-    `/v1/user`, 
   ];
 
   return async (ctx: Context, next: () => Promise<any>) => {
