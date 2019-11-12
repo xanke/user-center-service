@@ -79,11 +79,11 @@ export default abstract class CacheService extends Service {
       return this.abortError('请传入需要获取的缓存名称');
     }
 
-    try {
-      return JSON.parse(await this.store.get(this.getPrefixKey(key))); // 因为上面加储存值转换为 json, 所以这里需要把它转换回来
-    } catch (error) {
-      await this.abortError('get 方法只能获取 string 类型缓存');
-    }
+    // try {
+    //   return JSON.parse(await this.store.get(this.getPrefixKey(key))); // 因为上面加储存值转换为 json, 所以这里需要把它转换回来
+    // } catch (error) {
+    //   await this.abortError('get 方法只能获取 string 类型缓存');
+    // }
   }
 
   /**

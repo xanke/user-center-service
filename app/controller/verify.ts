@@ -34,10 +34,10 @@ export default class VerifyController extends Controller {
       ctx.error('ERR_DUPLICATED_PHONE_NO');
     }
 
-    const time = await ctx.service.cache.get(phone + '-verify-time');
-    if ((Date.now() - time) < 60 * 1000 ) {
-      ctx.error('ERR_VERIFY_CODE_TIME');
-    }
+    // const time = await ctx.service.cache.get(phone + '-verify-time');
+    // if ((Date.now() - time) < 60 * 1000 ) {
+    //   ctx.error('ERR_VERIFY_CODE_TIME');
+    // }
 
     const verifyCode = app.randomNum(4);
     ctx.service.cache.set(phone + '-verify', verifyCode, 60 * 60);

@@ -1,11 +1,3 @@
-/*
-+-----------------------------------------------------------------------------------------------------------------------
-| Author: atzcl <atzcl0310@gmail.com>  Blog：https://www.atzcl.cn
-+-----------------------------------------------------------------------------------------------------------------------
-| 处理使用 jwt 验证
-|
-*/
-
 import { Context } from 'egg';
 
 export default function authJWTMiddleware () {
@@ -13,8 +5,9 @@ export default function authJWTMiddleware () {
    * 该中间件无须验证的路由数组
    */
   const except: string[] = [
-    `/v1/login`, 
-    `/v1/register`, 
+    '/',
+    '/v1/login',
+    '/v1/register',
   ];
 
   return async (ctx: Context, next: () => Promise<any>) => {

@@ -12,9 +12,9 @@ export default (appInfo: EggAppConfig) => {
   const config = {} as PowerPartial<EggAppConfig> & BizConfig;
 
   // app special config
-  config.sourceUrl = `https://github.com/eggjs/examples/tree/master/${
-    appInfo.name
-  }`;
+  // config.sourceUrl = `https://github.com/eggjs/examples/tree/master/${
+  //   appInfo.name
+  // }`;
 
   // override config from framework / plugin
   // use for cookie sign key, should change to your own and keep security
@@ -33,14 +33,14 @@ export default (appInfo: EggAppConfig) => {
     timezone: '+08:00',
   };
 
-  config.redis = {
-    client: {
-      host: '127.0.0.1',
-      port: '6379',
-      password: '',
-      db: '0',
-    },
-  };
+  // config.redis = {
+  //   client: {
+  //     host: '127.0.0.1',
+  //     port: '6379',
+  //     password: '',
+  //     db: '0',
+  //   },
+  // };
 
   config.sessionRedis = {
     name: '',
@@ -55,6 +55,12 @@ export default (appInfo: EggAppConfig) => {
   config.gt3 = {
     geetestId: '',
     geetestKey: '',
+  };
+
+  config.security = {
+    csrf: {
+      enable: false,
+    },
   };
 
   return config;

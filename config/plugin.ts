@@ -40,4 +40,9 @@ export default {
     enable: true,
     package: 'egg-session-redis',
   },
+
+  cors: {
+    enable: true,
+    package: 'egg-cors',
+  }
 };

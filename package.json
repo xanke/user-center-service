@@ -7,7 +7,7 @@
     "typescript": true
   },
   "scripts": {
-    "start": "egg-scripts start --title=user-center-service",
+    "start": "cross-env EGG_SERVER_ENV=local egg-bin dev",
     "stop": "egg-scripts stop --title=user-center-service",
     "dev": "egg-bin dev -r egg-ts-helper/register --port 7501",
     "debug": "egg-bin debug -r egg-ts-helper/register",
@@ -24,6 +24,7 @@
     "bcryptjs": "^2.4.3",
     "crypto": "^1.0.1",
     "egg": "^2.6.1",
+    "egg-cors": "^2.2.2",
     "egg-jwt": "^3.0.0",
     "egg-redis": "^2.0.0",
     "egg-router-plus": "^1.2.0",
