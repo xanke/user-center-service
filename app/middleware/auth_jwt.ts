@@ -6,6 +6,7 @@ export default function authJWTMiddleware () {
    */
   const except: string[] = [
     '/',
+    '/install',
     '/v1/login',
     '/v1/register',
   ];

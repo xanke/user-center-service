@@ -4,6 +4,7 @@ export default (app: Application) => {
   const { controller, router } = app;
 
   router.get('/', controller.home.index);
+  router.get('/install', controller.root.install);
   router.post('/v1/sign-in', controller.account.signIn);
   router.post('/v1/wx-login', controller.wx.login);
   router.post('/v1/login', controller.account.login);
