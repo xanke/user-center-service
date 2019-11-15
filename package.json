@@ -9,7 +9,7 @@
   "scripts": {
     "start": "cross-env EGG_SERVER_ENV=local egg-bin dev",
     "stop": "egg-scripts stop --title=user-center-service",
-    "dev": "egg-bin dev -r egg-ts-helper/register --port 7501",
+    "dev": "egg-bin dev -r egg-ts-helper/register --port 7001",
     "debug": "egg-bin debug -r egg-ts-helper/register",
     "test-local": "egg-bin test -r egg-ts-helper/register",
     "test": "npm run lint -- --fix && npm run test-local",

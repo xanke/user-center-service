@@ -1,12 +1,9 @@
-// This file was auto created by egg-ts-helper
+// This file is created by egg-ts-helper@1.25.6
 // Do not modify this file!!!!!!!!!
 
-import ExtendObject from '../../../app/extend/context';
+import 'egg';
+import ExtendContext from '../../../app/extend/context';
+type ExtendContextType = typeof ExtendContext;
 declare module 'egg' {
-  interface Context {
-    error: typeof ExtendObject.error;
-    validateStruct: typeof ExtendObject.validateStruct;
-    abort: typeof ExtendObject.abort;
-    validate: typeof ExtendObject.validate;
-  }
+  interface Context extends ExtendContextType { }
 }

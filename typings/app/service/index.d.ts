@@ -1,20 +1,27 @@
-// This file was auto created by egg-ts-helper
+// This file is created by egg-ts-helper@1.25.6
 // Do not modify this file!!!!!!!!!
 
-import Auth from '../../../app/service/auth';
-import Cache from '../../../app/service/cache';
-import Jwt from '../../../app/service/jwt';
-import Mail from '../../../app/service/mail';
-import Validate from '../../../app/service/validate';
-import Wx from '../../../app/service/wx';
+import 'egg';
+import ExportAuth from '../../../app/service/auth';
+import ExportCache from '../../../app/service/cache';
+import ExportJwt from '../../../app/service/jwt';
+import ExportMail from '../../../app/service/mail';
+import ExportValidate from '../../../app/service/validate';
+import ExportWx from '../../../app/service/wx';
+import ExportAccountCaptcha from '../../../app/service/account/captcha';
+import ExportAccountUser from '../../../app/service/account/user';
 
 declare module 'egg' {
   interface IService {
-    auth: Auth;
-    cache: Cache;
-    jwt: Jwt;
-    mail: Mail;
-    validate: Validate;
-    wx: Wx;
+    auth: ExportAuth;
+    cache: ExportCache;
+    jwt: ExportJwt;
+    mail: ExportMail;
+    validate: ExportValidate;
+    wx: ExportWx;
+    account: {
+      captcha: ExportAccountCaptcha;
+      user: ExportAccountUser;
+    }
   }
 }

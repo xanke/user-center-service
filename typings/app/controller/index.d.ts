@@ -1,18 +1,29 @@
-// This file was auto created by egg-ts-helper
+// This file is created by egg-ts-helper@1.25.6
 // Do not modify this file!!!!!!!!!
 
-import Account from '../../../app/controller/account';
-import Home from '../../../app/controller/home';
-import User from '../../../app/controller/user';
-import Verify from '../../../app/controller/verify';
-import Wx from '../../../app/controller/wx';
+import 'egg';
+import ExportAccount2 from '../../../app/controller/account2';
+import ExportHome from '../../../app/controller/home';
+import ExportVerify from '../../../app/controller/verify';
+import ExportWx from '../../../app/controller/wx';
+import ExportAccountUser from '../../../app/controller/account/user';
+import ExportRootInstall from '../../../app/controller/root/install';
+import ExportRootModelAccounts from '../../../app/controller/root/model/Accounts';
 
 declare module 'egg' {
   interface IController {
-    account: Account;
-    home: Home;
-    user: User;
-    verify: Verify;
-    wx: Wx;
+    account2: ExportAccount2;
+    home: ExportHome;
+    verify: ExportVerify;
+    wx: ExportWx;
+    account: {
+      user: ExportAccountUser;
+    }
+    root: {
+      install: ExportRootInstall;
+      model: {
+        accounts: ExportRootModelAccounts;
+      }
+    }
   }
 }

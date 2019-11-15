@@ -1,12 +1,9 @@
-// This file was auto created by egg-ts-helper
+// This file is created by egg-ts-helper@1.25.6
 // Do not modify this file!!!!!!!!!
 
-import ExtendObject from '../../../app/extend/helper';
+import 'egg';
+import ExtendIHelper from '../../../app/extend/helper';
+type ExtendIHelperType = typeof ExtendIHelper;
 declare module 'egg' {
-  interface IHelper {
-    toResponse: typeof ExtendObject.toResponse;
-    toSocketResponse: typeof ExtendObject.toSocketResponse;
-    getDataValues: typeof ExtendObject.getDataValues;
-    parseMsg: typeof ExtendObject.parseMsg;
-  }
+  interface IHelper extends ExtendIHelperType { }
 }
